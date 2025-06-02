@@ -20,7 +20,7 @@ public class PrincipalConBusqueda {
         Scanner lectura = new Scanner(System.in);
         System.out.println("Escriba el nombre de una película:");
         String busqueda = lectura.nextLine();
-        String direccion = "http://www.omdbapi.com/?t=" + busqueda  + "&apikey=8448b322";
+        String direccion = "http://www.omdbapi.com/?t=" + busqueda + "&apikey=8448b322";
 
         HttpClient client = HttpClient.newHttpClient();
 
@@ -41,8 +41,13 @@ public class PrincipalConBusqueda {
         //System.out.println(miTitulo.toString());
 
         TituloODMb miTituloODMb = gson.fromJson(json, TituloODMb.class);
-        Titulo miTitulo = new Titulo(miTituloODMb);
-        System.out.println(miTitulo.toString());
+        try {
+            Titulo miTitulo = new Titulo(miTituloODMb); //el formateo podria fallar
+            System.out.println(miTitulo.toString());
+        } catch (Error e) {
+            System.out.println("Ocurrió un error: ");
+            System.out.println(e.getMessage());
+        }
     }
 
 }
