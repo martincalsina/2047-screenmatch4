@@ -20,7 +20,7 @@ public class Titulo implements Comparable<Titulo>{
     public Titulo(TituloODMb miTituloODMb) {
         this.nombre = miTituloODMb.title();
         this.fechaDeLanzamiento = Integer.parseInt(miTituloODMb.year());
-        this.duracionEnMinutos = Integer.valueOf(miTituloODMb.runtime().substring(0, 2));
+        this.duracionEnMinutos = Integer.valueOf(miTituloODMb.runtime().substring(0, 3).replace(" ", ""));
     }
 
     public String getNombre() {

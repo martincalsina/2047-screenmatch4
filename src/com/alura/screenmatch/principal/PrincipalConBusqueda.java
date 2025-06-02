@@ -21,6 +21,7 @@ public class PrincipalConBusqueda {
         System.out.println("Escriba el nombre de una película:");
         String busqueda = lectura.nextLine();
         String direccion = "http://www.omdbapi.com/?t=" + busqueda + "&apikey=8448b322";
+        direccion = direccion.replace(" ", "+");
 
         HttpClient client = HttpClient.newHttpClient();
 
@@ -44,7 +45,7 @@ public class PrincipalConBusqueda {
         try {
             Titulo miTitulo = new Titulo(miTituloODMb); //el formateo podria fallar
             System.out.println(miTitulo.toString());
-        } catch (Error e) {
+        } catch (Exception e) {
             System.out.println("Ocurrió un error: ");
             System.out.println(e.getMessage());
         }
